@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>كل عام وأنتِ بخير يا غزل 🎂</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #fcf4f6;
+      --primary-color: #9b2246;
+      --accent-pink: #ff5c8a;
+      --card-bg: #ffffff;
+      --text-dark: #331a22;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      font-family: 'Tajawal', sans-serif;
+      color: var(--text-dark);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 380px;
+      text-align: center;
+    }
+
+    .birthday-title {
+      font-size: 26px;
+      color: var(--primary-color);
+      margin-bottom: 10px;
+      font-weight: bold;
+      animation: fadeInDown 1s ease;
+    }
+
+    .subtitle {
+      font-size: 15px;
+      color: #777;
+      margin-bottom: 30px;
+      animation: fadeIn 1.2s ease;
+    }
+
+    /* Gift Box Style */
+    .gift-box-container {
+      background: var(--card-bg);
+      padding: 40px 20px;
+      border-radius: 25px;
+      box-shadow: 0 10px 30px rgba(155, 34, 70, 0.08);
+      cursor: pointer;
+      position: relative;
+      transition: transform 0.2s ease;
+      border: 2px dashed rgba(255, 92, 138, 0.3);
+    }
+
+    .gift-box-container:active {
+      transform: scale(0.97);
+    }
+
+    .gift-icon {
+      font-size: 70px;
+      margin-bottom: 15px;
+      animation: bounce 2s infinite;
+    }
+
+    .gift-text {
+      font-size: 16px;
+      color: var(--primary-color);
+      font-weight: bold;
+    }
+
+    /* Hidden Surprise Message */
+    .surprise-card {
+      display: none;
+      background: var(--card-bg);
+      padding: 30px 20px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(155, 34, 70, 0.1);
+      animation: zoomIn 0.6s ease;
+      position: relative;
+    }
+
+    .surprise-card h2 {
+      color: var(--primary-color);
+      font-size: 22px;
+      margin-bottom: 15px;
+    }
+
+    .surprise-card p {
+      font-size: 16px;
+      line-height: 2;
+      color: #555;
+      white-space: pre-line;
+    }
+
+    .signature {
+      margin-top: 20px;
+      font-size: 14px;
+      color: var(--accent-pink);
+      font-weight: bold;
+    }
+
+    /* Animations */
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes zoomIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div id="introSection">
+      <h1 class="birthday-title">إلى الغالية غزل ✨</h1>
+      <p class="subtitle">في اليوم الي بيشبه جمال عيونك..</p>
+
+      <div class="gift-box-container" onclick="openGift()">
+        <div class="gift-icon">🎁</div>
+        <div class="gift-text">اضغطي هنا لفتح الهدية السرية</div>
+      </div>
+    </div>
+
+    <!-- Surprise Section -->
+    <div class="surprise-card" id="surpriseSection">
+      <h2>كل عام وأنتِ بألف خير! 🎉</h2>
+      <p>
+        اليوم ما بيمر مرور الكرام، اليوم أجا عيد ميلاد أحلى إنسانة دخلت حياتي.
+        كل سنة وأنتِ أقرب لقلبي، وكل سنة ضحكتك منورة أيامنا.
+        بتمنالك سنة مليانة فرح، تحقيق أماني، وكلشي حلو بيشبه حنيتك وبياض قلبك. 🤍
+      </p>
+      <div class="signature">عقبال المية سنة يا رب ✨</div>
+    </div>
+  </div>
+
+  <script>
+    function openGift() {
+      document.getElementById('introSection').style.display = 'none';
+      document.getElementById('surpriseSection').style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>
