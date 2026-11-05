@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>رسالة إلى غزل</title>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg-color: #fbf6f0;
@@ -55,12 +55,12 @@
     }
 
     .heart-btn {
-      width: 100px;
-      height: 100px;
+      width: 90px;
+      height: 90px;
       background-color: var(--accent-pink);
       display: inline-block;
       transform: rotate(-45deg);
-      margin: 30px 0;
+      margin: 30px 0 20px 0;
       cursor: pointer;
       position: relative;
       transition: transform 0.1s ease;
@@ -70,21 +70,21 @@
     .heart-btn::before,
     .heart-btn::after {
       content: "";
-      width: 100px;
-      height: 100px;
+      width: 90px;
+      height: 90px;
       background-color: var(--accent-pink);
       border-radius: 50%;
       position: absolute;
     }
 
     .heart-btn::before {
-      top: -50px;
+      top: -45px;
       left: 0;
     }
 
     .heart-btn::after {
       top: 0;
-      left: 50px;
+      left: 45px;
     }
 
     .heart-btn:active {
@@ -94,20 +94,14 @@
     .click-hint {
       font-size: 13px;
       color: #888;
-      margin-top: 10px;
-    }
-
-    .heart-counter {
-      font-size: 14px;
-      color: var(--primary-color);
-      margin-top: 8px;
-      font-weight: bold;
+      margin-top: 5px;
     }
 
     .love-reply {
-      margin-top: 10px;
-      font-size: 18px;
+      margin-top: 12px;
+      font-size: 19px;
       color: var(--primary-color);
+      font-weight: bold;
       display: none;
       animation: fadeIn 0.5s ease;
     }
@@ -202,7 +196,7 @@
       margin-top: 15px;
     }
 
-    /* Section 4: Reasons Cards Flip */
+    /* Section 4: Reasons Cards */
     .reasons-section {
       width: 100%;
       text-align: center;
@@ -251,8 +245,8 @@
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+      from { opacity: 0; transform: translateY(5px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
@@ -264,14 +258,13 @@
     <div class="hero-section">
       <h1 class="hero-title">بحبك... وهي مش آخر رسالة</h1>
       <div class="heart-btn" onclick="handleHeartClick()"></div>
-      <div class="click-hint">اضغطي على القلب</div>
-      <div class="heart-counter" id="heartCountText" style="display:none;"><span id="clicksNum">0</span> قلوب</div>
-      <div class="love-reply" id="loveReply">وأنا بحبك أكثر 🤍</div>
+      <div class="click-hint" id="clickHint">اضغطي على القلب</div>
+      <div class="love-reply" id="loveReply">🤍 وأنا بحبك أكثر 🤍</div>
     </div>
 
     <!-- Section 2: Letter -->
     <div class="letter-card">
-      <div class="letter-date">دمشق . 14 شباط</div>
+      <div class="letter-date">دمشق</div>
       <div class="letter-title">حبيبتي غزل،</div>
       <div class="typing-text" id="typewriter"></div>
     </div>
@@ -295,7 +288,7 @@
           <span class="time-sub">ثانية</span>
         </div>
       </div>
-      <div class="start-date-label">من 12 آذار 2023</div>
+      <div class="start-date-label">من 3 تموز 2022</div>
     </div>
 
     <!-- Section 4: Interactive Reasons -->
@@ -311,15 +304,12 @@
   </div>
 
   <script>
-    // 1. Heart Clicker Function
-    let clickCount = 0;
+    // 1. Heart Clicker Effect
     function handleHeartClick() {
-      clickCount++;
-      document.getElementById('heartCountText').style.display = 'block';
-      document.getElementById('clicksNum').innerText = clickCount;
-      if (clickCount >= 2) {
-        document.getElementById('loveReply').style.display = 'block';
-      }
+      const reply = document.getElementById('loveReply');
+      const hint = document.getElementById('clickHint');
+      reply.style.display = 'block';
+      hint.style.display = 'none';
     }
 
     // 2. Typewriter Effect for Message
@@ -334,8 +324,8 @@
     }
     window.onload = typeEffect;
 
-    // 3. Days & Time Counter
-    const startDate = new Date("2023-07-3T00:00:00"); // يمكنك تغيير تاريخ البداية من هنا
+    // 3. Days & Time Counter (3 July 2022 -> Year: 2022, Month: 6 [July], Day: 3)
+    const startDate = new Date(2022, 6, 3);
 
     function updateCounter() {
       const now = new Date();
@@ -346,10 +336,10 @@
       const minutes = Math.floor((diff / 1000 / 60) % 60);
       const seconds = Math.floor((diff / 1000) % 60);
 
-      document.getElementById("daysNum").innerText = days;
-      document.getElementById("hoursNum").innerText = hours;
-      document.getElementById("minsNum").innerText = minutes;
-      document.getElementById("secsNum").innerText = seconds;
+      document.getElementById("daysNum").innerText = days >= 0 ? days : 0;
+      document.getElementById("hoursNum").innerText = hours >= 0 ? hours : 0;
+      document.getElementById("minsNum").innerText = minutes >= 0 ? minutes : 0;
+      document.getElementById("secsNum").innerText = seconds >= 0 ? seconds : 0;
     }
     setInterval(updateCounter, 1000);
     updateCounter();
