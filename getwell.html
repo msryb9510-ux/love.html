@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سلامة قلبك يا غزل</title>
+    <style>
+        body {
+            background-color: #13171f;
+            color: #e6edf3;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .container {
+            background-color: #1d222c;
+            border: 1px solid #2e3644;
+            border-radius: 22px;
+            padding: 30px 24px;
+            max-width: 430px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
+        }
+        .heart {
+            font-size: 2rem;
+            display: inline-block;
+            margin-bottom: 8px;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.12); }
+        }
+        h1 {
+            color: #f2a6b3;
+            font-size: 1.55rem;
+            margin: 0 0 8px 0;
+        }
+        .intro {
+            color: #9ea7b3;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 22px;
+        }
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .care-btn {
+            background-color: #272d39;
+            color: #e6edf3;
+            border: 1px solid #3c4454;
+            padding: 13px 16px;
+            border-radius: 12px;
+            font-size: 0.98rem;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+        .care-btn:hover, .care-btn.active {
+            background-color: #3d2c35;
+            border-color: #f2a6b3;
+            color: #ffffff;
+        }
+        .message-box {
+            margin-top: 16px;
+            padding: 15px;
+            background-color: #13171f;
+            border-radius: 12px;
+            border-right: 3px solid #f2a6b3;
+            min-height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #ffdce3;
+        }
+        .divider {
+            height: 1px;
+            background-color: #2e3644;
+            margin: 26px 0;
+        }
+        .comfort-section h2 {
+            color: #d0d7de;
+            font-size: 1.1rem;
+            margin: 0 0 12px 0;
+            font-weight: 500;
+        }
+        .quote-box {
+            background-color: #13171f;
+            border-radius: 14px;
+            padding: 18px 15px;
+            font-size: 1.05rem;
+            line-height: 1.65;
+            color: #f0f4f8;
+            min-height: 75px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            transition: opacity 0.25s ease;
+        }
+        .comfort-btn {
+            background-color: #8c4a5c;
+            color: #ffffff;
+            border: none;
+            padding: 13px 26px;
+            border-radius: 30px;
+            font-size: 0.98rem;
+            cursor: pointer;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+        }
+        .comfort-btn:hover {
+            background-color: #a3586d;
+        }
+        .comfort-btn:active {
+            transform: scale(0.97);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="heart">🤍</div>
+        <h1>سلامتك ألف سلامة يا غزل</h1>
+        <p class="intro">ما على قلبك شر يا روحي.. هي وصفة صغيرة لحتى ترتاحي وتصيري أحسن:</p>
+        
+        <div class="btn-group">
+            <button class="care-btn" onclick="showNote(1, this)">☕ اشربي شي دافي</button>
+            <button class="care-btn" onclick="showNote(2, this)">💊 خذي دواك بوقته</button>
+            <button class="care-btn" onclick="showNote(3, this)">🛌 غمّضي عيونك وارتاحي</button>
+        </div>
+
+        <div class="message-box" id="noteDisplay">
+            اختاري أي خطوة من فوق لحتى تقرأي رسالتي إلها 🤍
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="comfort-section">
+            <h2>جرعة راحة سريعة</h2>
+            <div class="quote-box" id="quoteText">
+                هالوعكة رح تعدي بسرعة يا غزل، المهم هلق إنك ترتاحي وما تفكري بشي.
+            </div>
+            <button class="comfort-btn" onclick="nextQuote()">محتاجة كلمة تطمنك؟</button>
+        </div>
+    </div>
+
+    <script>
+        const notes = {
+            1: "كاسة يانسون أو بابونج دافية رح تريّح جسمك وتخفف تعبك، اشربيها على مهلك.",
+            2: "لا تهملي دواك أبداً، بدي ترجع صحتك وطاقتك بأسرع وقت لأن الدنيا ما بتحلو إلا فيكِ.",
+            3: "اتركي الموبايل وكل شي بيشغل بالك، نامي وارتاحي وأنا جنبك وقلبي معك بكل لحظة."
+        };
+
+        function showNote(id, btn) {
+            document.querySelectorAll('.care-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById('noteDisplay').innerText = notes[id];
+        }
+
+        const quotes = [
+            "هالوعكة رح تعدي بسرعة يا عيوني، المهم هلق إنك ترتاحي وما تفكري بشي.",
+            "سلامة عيونك وقلبك من كل تعب، يا ريت فيني آخد هالمرض عنك.",
+            "حتى وإنتِ تعبانة بتضلي أغلى وأجمل شي بحياتي، ديري بالك على حالك.",
+            "خذي نفس عميق وريّحي راسك، أنا معك وناطرك ترجعي بضحكتك الحلوة.",
+            "كل ساعة بتمر رح تصيري أقوى وأحسن، ما على قلبك شر يا روحي."
+        ];
+        let index = 0;
+
+        function nextQuote() {
+            index = (index + 1) % quotes.length;
+            const el = document.getElementById('quoteText');
+            el.style.opacity = 0;
+            setTimeout(() => {
+                el.innerText = quotes[index];
+                el.style.opacity = 1;
+            }, 200);
+        }
+    </script>
+</body>
+</html>
