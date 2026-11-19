@@ -4,26 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ما على قلبك شر يا حبيبتي</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg-top: #fff5f7;
-      --bg-bottom: #fff9f2;
-      --card-bg: #ffffff;
-      --surface: #fff0f3;
-      --surface-hover: #ffe5eb;
-      --envelope-body: #ffd6e0;
-      --envelope-flap: #ffc2d1;
-      --border-soft: rgba(232, 121, 149, 0.22);
-      --accent-rose: #e06d8b;
-      --accent-warm: #f4a261;
-      --seal-bg: #ff85a1;
-      --text-main: #3b2630;
-      --text-muted: #7c5c69;
-    }
-
     * {
       box-sizing: border-box;
       margin: 0;
@@ -32,8 +14,9 @@
 
     body {
       min-height: 100vh;
-      background: linear-gradient(165deg, var(--bg-top) 0%, var(--bg-bottom) 55%, #fef3ec 100%);
-      color: var(--text-main);
+      background-color: #fff5f7;
+      background-image: linear-gradient(165deg, #fff5f7 0%, #fff9f2 55%, #fef3ec 100%);
+      color: #3b2630;
       font-family: 'Cairo', sans-serif;
       display: flex;
       justify-content: center;
@@ -45,11 +28,11 @@
     .container {
       width: 100%;
       max-width: 440px;
-      background: var(--card-bg);
-      border: 1px solid var(--border-soft);
+      background-color: #ffffff;
+      border: 1px solid rgba(232, 121, 149, 0.25);
       border-radius: 28px;
       padding: 28px 20px 24px;
-      box-shadow: 0 20px 50px rgba(224, 109, 139, 0.14);
+      box-shadow: 0 18px 40px rgba(224, 109, 139, 0.14);
     }
 
     .header {
@@ -62,31 +45,24 @@
       height: 56px;
       margin: 0 auto 10px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #ffe3ea, #fff0d9);
+      background-color: #ffe3ea;
       border: 1px solid rgba(224, 109, 139, 0.25);
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 28px;
-      box-shadow: 0 8px 20px rgba(224, 109, 139, 0.16);
-      animation: floatSoft 3s ease-in-out infinite;
-    }
-
-    @keyframes floatSoft {
-      0%, 100% { transform: translateY(0) scale(1); }
-      50% { transform: translateY(-4px) scale(1.05); }
     }
 
     h1 {
       font-size: 1.45rem;
       font-weight: 700;
-      color: var(--accent-rose);
+      color: #e06d8b;
       margin-bottom: 8px;
     }
 
     .subtitle {
       font-size: 0.93rem;
-      color: var(--text-muted);
+      color: #7c5c69;
     }
 
     .envelopes-grid {
@@ -97,26 +73,22 @@
     }
 
     .envelope-card {
-      background: var(--surface);
-      border: 1px solid var(--border-soft);
+      background-color: #fff0f3;
+      border: 1px solid rgba(232, 121, 149, 0.25);
       border-radius: 20px;
       padding: 16px;
       cursor: pointer;
-      transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
-      user-select: none;
-      -webkit-tap-highlight-color: transparent;
+      transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
     }
 
     .envelope-card:hover {
-      background: var(--surface-hover);
+      background-color: #ffe5eb;
       transform: translateY(-2px);
-      border-color: rgba(224, 109, 139, 0.42);
     }
 
     .envelope-card.open {
-      background: #fff8f5;
-      border-color: var(--accent-rose);
-      box-shadow: 0 12px 26px rgba(224, 109, 139, 0.16);
+      background-color: #fff8f5;
+      border-color: #e06d8b;
     }
 
     .envelope-top-row {
@@ -129,24 +101,13 @@
       position: relative;
       width: 120px;
       height: 76px;
-      background: linear-gradient(160deg, var(--envelope-flap), var(--envelope-body));
-      border: 1px solid rgba(224, 109, 139, 0.3);
+      background-color: #ffd6e0;
+      border: 1px solid rgba(224, 109, 139, 0.35);
       border-radius: 12px;
-      box-shadow: 0 8px 16px rgba(224, 109, 139, 0.15);
       overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-    }
-
-    .envelope-graphic::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(32deg, rgba(255,255,255,0.35) 50%, transparent 50%),
-        linear-gradient(-32deg, rgba(224,109,139,0.12) 50%, transparent 50%);
-      pointer-events: none;
     }
 
     .envelope-flap {
@@ -154,58 +115,48 @@
       top: 0;
       left: 0;
       right: 0;
-      height: 42px;
-      background: linear-gradient(180deg, #ffb3c6 0%, #ffa0b8 100%);
+      height: 40px;
+      background-color: #ffb3c6;
       clip-path: polygon(0 0, 100% 0, 50% 100%);
-      transform-origin: top center;
-      transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
-      z-index: 2;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.45);
+      transition: opacity 0.25s ease, transform 0.25s ease;
     }
 
     .envelope-card.open .envelope-flap {
-      transform: rotateX(165deg);
-      z-index: 0;
+      opacity: 0.35;
+      transform: translateY(-6px);
     }
 
     .envelope-seal {
       position: relative;
-      z-index: 3;
+      z-index: 2;
       width: 30px;
       height: 30px;
       border-radius: 50%;
-      background: var(--seal-bg);
+      background-color: #ff85a1;
       border: 2px solid #fff5f7;
-      box-shadow: 0 4px 10px rgba(224, 109, 139, 0.28);
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 0.9rem;
       color: #ffffff;
       margin-top: 12px;
-      transition: opacity 0.25s ease, transform 0.25s ease;
+      transition: opacity 0.2s ease;
     }
 
     .envelope-card.open .envelope-seal {
       opacity: 0;
-      transform: scale(0.7);
     }
 
     .envelope-letter {
-      max-height: 0;
-      opacity: 0;
-      overflow: hidden;
-      transition: max-height 0.5s ease, opacity 0.35s ease, margin-top 0.35s ease;
+      display: none;
       text-align: center;
-      margin-top: 0;
-    }
-
-    .envelope-card.open .envelope-letter {
-      max-height: 300px;
-      opacity: 1;
       margin-top: 14px;
       padding-top: 14px;
       border-top: 1px dashed rgba(224, 109, 139, 0.35);
+    }
+
+    .envelope-card.open .envelope-letter {
+      display: block;
     }
 
     .letter-emoji {
@@ -215,4 +166,132 @@
     }
 
     .letter-title {
-      font-size: 
+      font-size: 1.02rem;
+      color: #e06d8b;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .letter-detail {
+      font-size: 0.91rem;
+      color: #3b2630;
+      font-weight: 400;
+    }
+
+    .divider {
+      height: 1px;
+      background-color: rgba(224, 109, 139, 0.25);
+      margin: 8px 0 20px;
+    }
+
+    .quick-dose-title {
+      text-align: center;
+      font-size: 0.96rem;
+      color: #e06d8b;
+      margin-bottom: 14px;
+      font-weight: 700;
+    }
+
+    .quick-dose-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .quick-dose-box {
+      background-color: #fff7f9;
+      border: 1px solid rgba(232, 121, 149, 0.22);
+      border-radius: 18px;
+      padding: 16px;
+      text-align: center;
+      font-size: 0.93rem;
+      color: #3b2630;
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <header class="header">
+      <div class="heart-badge">🌸</div>
+      <h1>ما على قلبك شر يا حبيبتي</h1>
+      <p class="subtitle">ما على قلبك شر يا روحي.. هي وصفة صغيرة لحتى ترتاحي وتصيري أحسن:</p>
+    </header>
+
+    <section class="envelopes-grid">
+      <div class="envelope-card" onclick="toggleEnvelope(this)">
+        <div class="envelope-top-row">
+          <div class="envelope-graphic">
+            <div class="envelope-flap"></div>
+            <div class="envelope-seal">♥</div>
+          </div>
+        </div>
+        <div class="envelope-letter">
+          <span class="letter-emoji">☕</span>
+          <p class="letter-title">اشربي شي دافي</p>
+          <p class="letter-detail">خلي كاسة دافية تهدي حلقك وجسمك، ولا تستعجلي، خدي وقتك وارتاحي.</p>
+        </div>
+      </div>
+
+      <div class="envelope-card" onclick="toggleEnvelope(this)">
+        <div class="envelope-top-row">
+          <div class="envelope-graphic">
+            <div class="envelope-flap"></div>
+            <div class="envelope-seal">♥</div>
+          </div>
+        </div>
+        <div class="envelope-letter">
+          <span class="letter-emoji">💊</span>
+          <p class="letter-title">خذي دواء بوقته</p>
+          <p class="letter-detail">التزمي بوقته ومعدته فاضية أو مليانة حسب التعليمات، لحتى يخف التعب بأسرع وقت.</p>
+        </div>
+      </div>
+
+      <div class="envelope-card" onclick="toggleEnvelope(this)">
+        <div class="envelope-top-row">
+          <div class="envelope-graphic">
+            <div class="envelope-flap"></div>
+            <div class="envelope-seal">♥</div>
+          </div>
+        </div>
+        <div class="envelope-letter">
+          <span class="letter-emoji">🛌</span>
+          <p class="letter-title">غمّضي عيونك وارتاحي</p>
+          <p class="letter-detail">اتركي الموبايل وكل شي بيشغل بالك، نامي وارتاحي وأنا جنبك وقلبي معك بكل لحظة.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section>
+      <h2 class="quick-dose-title">جرعة راحة سريعة</h2>
+      <div class="quick-dose-list">
+        <div class="quick-dose-box">
+          هالوعكة رح تعدي بسرعة يا حبيبتي، المهم هلق إنك ترتاحي وما تفكري بشي.
+        </div>
+        <div class="quick-dose-box">
+          تعبك بتعبني، فبليز انتبهي عحالك واعتبري الراحة أولويتك الأولى اليوم.
+        </div>
+        <div class="quick-dose-box">
+          رح ترجعي أحسن وأقوى من قبل، وبضل حبك واهتمامي معك خطوة بخطوة.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    function toggleEnvelope(selectedCard) {
+      var allCards = document.querySelectorAll('.envelope-card');
+      var wasOpen = selectedCard.classList.contains('open');
+
+      for (var i = 0; i < allCards.length; i++) {
+        allCards[i].classList.remove('open');
+      }
+
+      if (!wasOpen) {
+        selectedCard.classList.add('open');
+      }
+    }
+  </script>
+</body>
+</html>
