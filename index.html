@@ -1,366 +1,188 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>رسالة إلى غزل</title>
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg-color: #fbf6f0;
-      --primary-color: #801336;
-      --accent-pink: #ee4540;
-      --card-bg: #ffffff;
-      --text-dark: #2d132c;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      background-color: var(--bg-color);
-      font-family: 'Tajawal', sans-serif;
-      color: var(--text-dark);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 20px 15px;
-      min-height: 100vh;
-    }
-
-    .container {
-      width: 100%;
-      max-width: 380px;
-      display: flex;
-      flex-direction: column;
-      gap: 25px;
-      align-items: center;
-    }
-
-    /* Section 1: Heart Clicker */
-    .hero-section {
-      text-align: center;
-      width: 100%;
-      padding: 20px 0;
-    }
-
-    .hero-title {
-      font-size: 24px;
-      color: var(--primary-color);
-      margin-bottom: 15px;
-      font-weight: 700;
-    }
-
-    .heart-btn {
-      width: 90px;
-      height: 90px;
-      background-color: var(--accent-pink);
-      display: inline-block;
-      transform: rotate(-45deg);
-      margin: 30px 0 20px 0;
-      cursor: pointer;
-      position: relative;
-      transition: transform 0.1s ease;
-      box-shadow: 0 10px 20px rgba(238, 69, 64, 0.3);
-    }
-
-    .heart-btn::before,
-    .heart-btn::after {
-      content: "";
-      width: 90px;
-      height: 90px;
-      background-color: var(--accent-pink);
-      border-radius: 50%;
-      position: absolute;
-    }
-
-    .heart-btn::before {
-      top: -45px;
-      left: 0;
-    }
-
-    .heart-btn::after {
-      top: 0;
-      left: 45px;
-    }
-
-    .heart-btn:active {
-      transform: rotate(-45deg) scale(1.15);
-    }
-
-    .click-hint {
-      font-size: 13px;
-      color: #888;
-      margin-top: 5px;
-    }
-
-    .love-reply {
-      margin-top: 12px;
-      font-size: 19px;
-      color: var(--primary-color);
-      font-weight: bold;
-      display: none;
-      animation: fadeIn 0.5s ease;
-    }
-
-    /* Section 2: Letter Card */
-    .letter-card {
-      background: #fff;
-      width: 100%;
-      padding: 25px;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.04);
-      background-image: repeating-linear-gradient(#fff, #fff 31px, #e8e8e8 31px, #e8e8e8 32px);
-      line-height: 32px;
-      border: 1px solid #eaeaea;
-    }
-
-    .letter-date {
-      font-size: 12px;
-      color: #999;
-      margin-bottom: 10px;
-    }
-
-    .letter-title {
-      font-size: 22px;
-      color: var(--primary-color);
-      margin-bottom: 10px;
-      font-weight: bold;
-    }
-
-    .typing-text {
-      font-size: 16px;
-      color: #444;
-      white-space: pre-line;
-      min-height: 100px;
-    }
-
-    /* Section 3: Counter Card */
-    .counter-card {
-      background: var(--card-bg);
-      width: 100%;
-      padding: 25px 20px;
-      border-radius: 20px;
-      text-align: center;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-    }
-
-    .counter-header {
-      color: var(--primary-color);
-      font-size: 14px;
-      margin-bottom: 15px;
-    }
-
-    .main-days {
-      font-size: 55px;
-      font-weight: bold;
-      color: var(--accent-pink);
-      line-height: 1;
-    }
-
-    .days-label {
-      font-size: 14px;
-      color: #777;
-      margin-bottom: 20px;
-    }
-
-    .time-grid {
-      display: flex;
-      justify-content: space-around;
-      border-top: 1px dashed #eee;
-      padding-top: 15px;
-    }
-
-    .time-unit {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .time-num {
-      font-size: 18px;
-      font-weight: bold;
-      color: var(--primary-color);
-    }
-
-    .time-sub {
-      font-size: 11px;
-      color: #999;
-    }
-
-    .start-date-label {
-      font-size: 11px;
-      color: #aaa;
-      margin-top: 15px;
-    }
-
-    /* Section 4: Reasons Cards */
-    .reasons-section {
-      width: 100%;
-      text-align: center;
-    }
-
-    .reasons-title {
-      color: var(--primary-color);
-      font-size: 18px;
-      margin-bottom: 15px;
-    }
-
-    .reason-card {
-      background: #fff;
-      padding: 30px 20px;
-      border-radius: 15px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-      min-height: 130px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      position: relative;
-      transition: transform 0.2s;
-    }
-
-    .reason-card:active {
-      transform: scale(0.98);
-    }
-
-    .reason-num {
-      color: var(--accent-pink);
-      font-weight: bold;
-      margin-bottom: 8px;
-    }
-
-    .reason-text {
-      font-size: 16px;
-      color: #333;
-    }
-
-    .card-indicator {
-      font-size: 11px;
-      color: #bbb;
-      margin-top: 10px;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(5px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سلامة قلبك يا غزل</title>
+    <style>
+        body {
+            background-color: #13171f;
+            color: #e6edf3;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .container {
+            background-color: #1d222c;
+            border: 1px solid #2e3644;
+            border-radius: 22px;
+            padding: 30px 24px;
+            max-width: 430px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
+        }
+        .heart {
+            font-size: 2rem;
+            display: inline-block;
+            margin-bottom: 8px;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.12); }
+        }
+        h1 {
+            color: #f2a6b3;
+            font-size: 1.55rem;
+            margin: 0 0 8px 0;
+        }
+        .intro {
+            color: #9ea7b3;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 22px;
+        }
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .care-btn {
+            background-color: #272d39;
+            color: #e6edf3;
+            border: 1px solid #3c4454;
+            padding: 13px 16px;
+            border-radius: 12px;
+            font-size: 0.98rem;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+        .care-btn:hover, .care-btn.active {
+            background-color: #3d2c35;
+            border-color: #f2a6b3;
+            color: #ffffff;
+        }
+        .message-box {
+            margin-top: 16px;
+            padding: 15px;
+            background-color: #13171f;
+            border-radius: 12px;
+            border-right: 3px solid #f2a6b3;
+            min-height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #ffdce3;
+        }
+        .divider {
+            height: 1px;
+            background-color: #2e3644;
+            margin: 26px 0;
+        }
+        .comfort-section h2 {
+            color: #d0d7de;
+            font-size: 1.1rem;
+            margin: 0 0 12px 0;
+            font-weight: 500;
+        }
+        .quote-box {
+            background-color: #13171f;
+            border-radius: 14px;
+            padding: 18px 15px;
+            font-size: 1.05rem;
+            line-height: 1.65;
+            color: #f0f4f8;
+            min-height: 75px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            transition: opacity 0.25s ease;
+        }
+        .comfort-btn {
+            background-color: #8c4a5c;
+            color: #ffffff;
+            border: none;
+            padding: 13px 26px;
+            border-radius: 30px;
+            font-size: 0.98rem;
+            cursor: pointer;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+        }
+        .comfort-btn:hover {
+            background-color: #a3586d;
+        }
+        .comfort-btn:active {
+            transform: scale(0.97);
+        }
+    </style>
 </head>
 <body>
-
-  <div class="container">
-
-    <!-- Section 1 -->
-    <div class="hero-section">
-      <h1 class="hero-title">بحبك... وهي مش آخر رسالة</h1>
-      <div class="heart-btn" onclick="handleHeartClick()"></div>
-      <div class="click-hint" id="clickHint">اضغطي على القلب</div>
-      <div class="love-reply" id="loveReply">🤍 وأنا بحبك أكثر 🤍</div>
-    </div>
-
-    <!-- Section 2: Letter -->
-    <div class="letter-card">
-      <div class="letter-date">دمشق</div>
-      <div class="letter-title">حبيبتي غزل،</div>
-      <div class="typing-text" id="typewriter"></div>
-    </div>
-
-    <!-- Section 3: Counter -->
-    <div class="counter-card">
-      <div class="counter-header">❤️ صرنا مع بعض ❤️</div>
-      <div class="main-days" id="daysNum">0</div>
-      <div class="days-label">يوم</div>
-      <div class="time-grid">
-        <div class="time-unit">
-          <span class="time-num" id="hoursNum">0</span>
-          <span class="time-sub">ساعة</span>
+    <div class="container">
+        <div class="heart">🤍</div>
+        <h1>سلامتك ألف سلامة يا غزل</h1>
+        <p class="intro">ما على قلبك شر يا روحي.. هي وصفة صغيرة لحتى ترتاحي وتصيري أحسن:</p>
+        
+        <div class="btn-group">
+            <button class="care-btn" onclick="showNote(1, this)">☕ اشربي شي دافي</button>
+            <button class="care-btn" onclick="showNote(2, this)">💊 خذي دواك بوقته</button>
+            <button class="care-btn" onclick="showNote(3, this)">🛌 غمّضي عيونك وارتاحي</button>
         </div>
-        <div class="time-unit">
-          <span class="time-num" id="minsNum">0</span>
-          <span class="time-sub">دقيقة</span>
+
+        <div class="message-box" id="noteDisplay">
+            اختاري أي خطوة من فوق لحتى تقرأي رسالتي إلها 🤍
         </div>
-        <div class="time-unit">
-          <span class="time-num" id="secsNum">0</span>
-          <span class="time-sub">ثانية</span>
+
+        <div class="divider"></div>
+
+        <div class="comfort-section">
+            <h2>جرعة راحة سريعة</h2>
+            <div class="quote-box" id="quoteText">
+                هالوعكة رح تعدي بسرعة يا غزل، المهم هلق إنك ترتاحي وما تفكري بشي.
+            </div>
+            <button class="comfort-btn" onclick="nextQuote()">محتاجة كلمة تطمنك؟</button>
         </div>
-      </div>
-      <div class="start-date-label">من 3 تموز 2022</div>
     </div>
 
-    <!-- Section 4: Interactive Reasons -->
-    <div class="reasons-section">
-      <div class="reasons-title">ليش بحبك؟ <br><small style="font-size: 12px; color: #777;">لأنك... وكل شيء بتحبو فيها</small></div>
-      <div class="reason-card" onclick="nextReason()">
-        <div class="reason-num" id="reasonIndex">1</div>
-        <div class="reason-text" id="reasonContent">ضحكتك بتنسيني تعب اليوم كلو 💖</div>
-        <div class="card-indicator" id="reasonCounter">1 من 6</div>
-      </div>
-    </div>
+    <script>
+        const notes = {
+            1: "كاسة يانسون أو بابونج دافية رح تريّح جسمك وتخفف تعبك، اشربيها على مهلك.",
+            2: "لا تهملي دواك أبداً، بدي ترجع صحتك وطاقتك بأسرع وقت لأن الدنيا ما بتحلو إلا فيكِ.",
+            3: "اتركي الموبايل وكل شي بيشغل بالك، نامي وارتاحي وأنا جنبك وقلبي معك بكل لحظة."
+        };
 
-  </div>
+        function showNote(id, btn) {
+            document.querySelectorAll('.care-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById('noteDisplay').innerText = notes[id];
+        }
 
-  <script>
-    // 1. Heart Clicker Effect
-    function handleHeartClick() {
-      const reply = document.getElementById('loveReply');
-      const hint = document.getElementById('clickHint');
-      reply.style.display = 'block';
-      hint.style.display = 'none';
-    }
+        const quotes = [
+            "هالوعكة رح تعدي بسرعة يا غزل، المهم هلق إنك ترتاحي وما تفكري بشي.",
+            "سلامة عيونك وقلبك من كل تعب، يا ريت فيني آخد هالمرض عنك.",
+            "حتى وإنتِ تعبانة بتضلي أغلى وأجمل شي بحياتي، ديري بالك على حالك.",
+            "خذي نفس عميق وريّحي راسك، أنا معك وناطرك ترجعي بضحكتك الحلوة.",
+            "كل ساعة بتمر رح تصيري أقوى وأحسن، ما على قلبك شر يا روحي."
+        ];
+        let index = 0;
 
-    // 2. Typewriter Effect for Message
-    const messageText = "ما بعرف من وين بلّش... بس بعرف إني من يوم ما دخلتي حياتي، صار للأيام طعم ثاني.\nبحب ضحكتك حتى لما تحاولي تخبيها، وبحب كيف بتسمعيني حتى لما ما اعرف احكي...";
-    let index = 0;
-    function typeEffect() {
-      if (index < messageText.length) {
-        document.getElementById("typewriter").textContent += messageText.charAt(index);
-        index++;
-        setTimeout(typeEffect, 60);
-      }
-    }
-    window.onload = typeEffect;
-
-    // 3. Days & Time Counter (3 July 2022 -> Year: 2022, Month: 6 [July], Day: 3)
-    const startDate = new Date(2022, 6, 3);
-
-    function updateCounter() {
-      const now = new Date();
-      const diff = now - startDate;
-
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((diff / 1000 / 60) % 60);
-      const seconds = Math.floor((diff / 1000) % 60);
-
-      document.getElementById("daysNum").innerText = days >= 0 ? days : 0;
-      document.getElementById("hoursNum").innerText = hours >= 0 ? hours : 0;
-      document.getElementById("minsNum").innerText = minutes >= 0 ? minutes : 0;
-      document.getElementById("secsNum").innerText = seconds >= 0 ? seconds : 0;
-    }
-    setInterval(updateCounter, 1000);
-    updateCounter();
-
-    // 4. Reasons Card Flip
-    const reasons = [
-      "ضحكتك بتنسيني تعب اليوم كلو 💖",
-      "بتفهمني من نظرة، بلا ولا كلمة 🌸",
-      "إلك أحنّ قلب عرفتو ✨",
-      "بتخلي كل يوم بسيط يصنع ذكرى حلوة 🤍",
-      "وجودك بحياتي أمان وراحة بال 🌿",
-      "لأنك غزل... وبس! 🥰"
-    ];
-    let currentReason = 0;
-
-    function nextReason() {
-      currentReason = (currentReason + 1) % reasons.length;
-      document.getElementById("reasonIndex").innerText = currentReason + 1;
-      document.getElementById("reasonContent").innerText = reasons[currentReason];
-      document.getElementById("reasonCounter").innerText = `${currentReason + 1} من ${reasons.length}`;
-    }
-  </script>
+        function nextQuote() {
+            index = (index + 1) % quotes.length;
+            const el = document.getElementById('quoteText');
+            el.style.opacity = 0;
+            setTimeout(() => {
+                el.innerText = quotes[index];
+                el.style.opacity = 1;
+            }, 200);
+        }
+    </script>
 </body>
 </html>
