@@ -1,188 +1,331 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سلامة قلبك يا غزل</title>
-    <style>
-        body {
-            background-color: #13171f;
-            color: #e6edf3;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-        .container {
-            background-color: #1d222c;
-            border: 1px solid #2e3644;
-            border-radius: 22px;
-            padding: 30px 24px;
-            max-width: 430px;
-            width: 100%;
-            text-align: center;
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
-        }
-        .heart {
-            font-size: 2rem;
-            display: inline-block;
-            margin-bottom: 8px;
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.12); }
-        }
-        h1 {
-            color: #f2a6b3;
-            font-size: 1.55rem;
-            margin: 0 0 8px 0;
-        }
-        .intro {
-            color: #9ea7b3;
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 22px;
-        }
-        .btn-group {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        .care-btn {
-            background-color: #272d39;
-            color: #e6edf3;
-            border: 1px solid #3c4454;
-            padding: 13px 16px;
-            border-radius: 12px;
-            font-size: 0.98rem;
-            cursor: pointer;
-            transition: all 0.25s ease;
-        }
-        .care-btn:hover, .care-btn.active {
-            background-color: #3d2c35;
-            border-color: #f2a6b3;
-            color: #ffffff;
-        }
-        .message-box {
-            margin-top: 16px;
-            padding: 15px;
-            background-color: #13171f;
-            border-radius: 12px;
-            border-right: 3px solid #f2a6b3;
-            min-height: 52px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.95rem;
-            line-height: 1.6;
-            color: #ffdce3;
-        }
-        .divider {
-            height: 1px;
-            background-color: #2e3644;
-            margin: 26px 0;
-        }
-        .comfort-section h2 {
-            color: #d0d7de;
-            font-size: 1.1rem;
-            margin: 0 0 12px 0;
-            font-weight: 500;
-        }
-        .quote-box {
-            background-color: #13171f;
-            border-radius: 14px;
-            padding: 18px 15px;
-            font-size: 1.05rem;
-            line-height: 1.65;
-            color: #f0f4f8;
-            min-height: 75px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 16px;
-            transition: opacity 0.25s ease;
-        }
-        .comfort-btn {
-            background-color: #8c4a5c;
-            color: #ffffff;
-            border: none;
-            padding: 13px 26px;
-            border-radius: 30px;
-            font-size: 0.98rem;
-            cursor: pointer;
-            transition: background-color 0.2s ease, transform 0.1s ease;
-        }
-        .comfort-btn:hover {
-            background-color: #a3586d;
-        }
-        .comfort-btn:active {
-            transform: scale(0.97);
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ما على قلبك شر يا حبيبتي</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-outer: #0f1116;
+      --card-bg: #171a22;
+      --surface: #202531;
+      --surface-hover: #272d3c;
+      --envelope-body: #252b38;
+      --envelope-flap: #2e3647;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --accent-rose: #d97b93;
+      --accent-soft: rgba(217, 123, 147, 0.16);
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      background: radial-gradient(circle at top, #1b202c 0%, var(--bg-outer) 70%);
+      color: var(--text-main);
+      font-family: 'Cairo', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px 14px;
+      line-height: 1.65;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 440px;
+      background: var(--card-bg);
+      border: 1px solid var(--border-subtle);
+      border-radius: 26px;
+      padding: 28px 20px 24px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .heart-icon {
+      font-size: 28px;
+      display: inline-block;
+      margin-bottom: 8px;
+      filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.18));
+      animation: pulse 2.8s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+    }
+
+    h1 {
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+    }
+
+    /* شبكة الظروف التلاتة */
+    .envelopes-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 26px;
+    }
+
+    .envelope-card {
+      background: var(--surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 18px;
+      padding: 16px;
+      cursor: pointer;
+      transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .envelope-card:hover {
+      background: var(--surface-hover);
+      transform: translateY(-2px);
+      border-color: rgba(255, 255, 255, 0.16);
+    }
+
+    .envelope-card.open {
+      background: #231d26;
+      border-color: rgba(217, 123, 147, 0.45);
+      box-shadow: 0 10px 28px rgba(217, 123, 147, 0.12);
+    }
+
+    /* شكل الظرف المغلق من برا (بدون أي نص يوضح المحتوى) */
+    .envelope-top-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .envelope-graphic {
+      position: relative;
+      width: 116px;
+      height: 74px;
+      background: linear-gradient(160deg, var(--envelope-flap), var(--envelope-body));
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 10px;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ثنيات الظرف السفلية */
+    .envelope-graphic::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(32deg, rgba(255,255,255,0.04) 50%, transparent 50%),
+        linear-gradient(-32deg, rgba(0,0,0,0.22) 50%, transparent 50%);
+      pointer-events: none;
+    }
+
+    /* غطاء الظرف العلوي */
+    .envelope-flap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 40px;
+      background: linear-gradient(180deg, #374156 0%, #272e3d 100%);
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
+      transform-origin: top center;
+      transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+      z-index: 2;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .envelope-card.open .envelope-flap {
+      transform: rotateX(165deg);
+      z-index: 0;
+    }
+
+    /* ختم صغير بالمنتصف بدون أي كلمات */
+    .envelope-seal {
+      position: relative;
+      z-index: 3;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--accent-soft);
+      border: 1px solid rgba(217, 123, 147, 0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      color: #f6b3c4;
+      margin-top: 12px;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .envelope-card.open .envelope-seal {
+      opacity: 0;
+      transform: scale(0.7);
+    }
+
+    /* رسالة المحتوى داخل الظرف بعد الفتح */
+    .envelope-letter {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height 0.45s ease, opacity 0.35s ease, margin-top 0.35s ease;
+      text-align: center;
+      margin-top: 0;
+    }
+
+    .envelope-card.open .envelope-letter {
+      max-height: 220px;
+      opacity: 1;
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px dashed rgba(255, 255, 255, 0.14);
+    }
+
+    .letter-emoji {
+      font-size: 1.35rem;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .letter-text {
+      font-size: 0.96rem;
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    /* قسم جرعة الراحة السريعة */
+    .divider {
+      height: 1px;
+      background: var(--border-subtle);
+      margin: 8px 0 20px;
+    }
+
+    .quick-dose-title {
+      text-align: center;
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .quick-dose-box {
+      background: var(--surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 18px;
+      padding: 18px 16px;
+      text-align: center;
+      font-size: 0.95rem;
+      color: var(--text-main);
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="heart">🤍</div>
-        <h1>سلامتك ألف سلامة يا غزل</h1>
-        <p class="intro">ما على قلبك شر يا روحي.. هي وصفة صغيرة لحتى ترتاحي وتصيري أحسن:</p>
-        
-        <div class="btn-group">
-            <button class="care-btn" onclick="showNote(1, this)">☕ اشربي شي دافي</button>
-            <button class="care-btn" onclick="showNote(2, this)">💊 خذي دواك بوقته</button>
-            <button class="care-btn" onclick="showNote(3, this)">🛌 غمّضي عيونك وارتاحي</button>
+  <main class="container">
+    <header class="header">
+      <span class="heart-icon" aria-hidden="true">🤍</span>
+      <h1>ما على قلبك شر يا حبيبتي</h1>
+      <p class="subtitle">بإذن الله أجر وعافية يا روحي.. هي وصفة صغيرة لحتى ترتاحي وتصيري أحسن:</p>
+    </header>
+
+    <section class="envelopes-grid" aria-label="ظروف صغيرة">
+      <!-- الظرف الأول -->
+      <div class="envelope-card" role="button" tabindex="0" aria-expanded="false" onclick="toggleEnvelope(this)" onkeydown="handleKey(event, this)">
+        <div class="envelope-top-row">
+          <div class="envelope-graphic">
+            <div class="envelope-flap"></div>
+            <div class="envelope-seal">✦</div>
+          </div>
         </div>
-
-        <div class="message-box" id="noteDisplay">
-            اختاري أي خطوة من فوق لحتى تقرأي رسالتي إلها 🤍
+        <div class="envelope-letter">
+          <span class="letter-emoji">☕</span>
+          <p class="letter-text">اشربي شي دافي</p>
         </div>
+      </div>
 
-        <div class="divider"></div>
-
-        <div class="comfort-section">
-            <h2>جرعة راحة سريعة</h2>
-            <div class="quote-box" id="quoteText">
-                هالوعكة رح تعدي بسرعة يا غزل، المهم هلق إنك ترتاحي وما تفكري بشي.
-            </div>
-            <button class="comfort-btn" onclick="nextQuote()">محتاجة كلمة تطمنك؟</button>
+      <!-- الظرف الثاني -->
+      <div class="envelope-card" role="button" tabindex="0" aria-expanded="false" onclick="toggleEnvelope(this)" onkeydown="handleKey(event, this)">
+        <div class="envelope-top-row">
+          <div class="envelope-graphic">
+            <div class="envelope-flap"></div>
+            <div class="envelope-seal">✦</div>
+          </div>
         </div>
-    </div>
+        <div class="envelope-letter">
+          <span class="letter-emoji">💊</span>
+          <p class="letter-text">خذي دواء بوقته</p>
+        </div>
+      </div>
 
-    <script>
-        const notes = {
-            1: "كاسة يانسون أو بابونج دافية رح تريّح جسمك وتخفف تعبك، اشربيها على مهلك.",
-            2: "لا تهملي دواك أبداً، بدي ترجع صحتك وطاقتك بأسرع وقت لأن الدنيا ما بتحلو إلا فيكِ.",
-            3: "اتركي الموبايل وكل شي بيشغل بالك، نامي وارتاحي وأنا جنبك وقلبي معك بكل لحظة."
-        };
+      <!-- الظرف الثالث -->
+      <div class="envelope-card" role="button" tabindex="0" aria-expanded="false" onclick="toggleEnvelope(this)" onkeydown="handleKey(event, this)">
+        <div class="envelope-top-row">
+          <div class="envelope-graphic">
+            <div class="envelope-flap"></div>
+            <div class="envelope-seal">✦</div>
+          </div>
+        </div>
+        <div class="envelope-letter">
+          <span class="letter-emoji">🛌</span>
+          <p class="letter-text">غمّضي عيونك وارتاحي<br><span style="font-weight: 400; font-size: 0.88rem; color: #d1d5db;">اتركي الموبايل وكل شي بيشغل بالك، نامي وارتاحي وأنا جنبك وقلبي معك بكل لحظة.</span></p>
+        </div>
+      </div>
+    </section>
 
-        function showNote(id, btn) {
-            document.querySelectorAll('.care-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            document.getElementById('noteDisplay').innerText = notes[id];
-        }
+    <div class="divider"></div>
 
-        const quotes = [
-            "هالوعكة رح تعدي بسرعة يا غزل، المهم هلق إنك ترتاحي وما تفكري بشي.",
-            "سلامة عيونك وقلبك من كل تعب، يا ريت فيني آخد هالمرض عنك.",
-            "حتى وإنتِ تعبانة بتضلي أغلى وأجمل شي بحياتي، ديري بالك على حالك.",
-            "خذي نفس عميق وريّحي راسك، أنا معك وناطرك ترجعي بضحكتك الحلوة.",
-            "كل ساعة بتمر رح تصيري أقوى وأحسن، ما على قلبك شر يا روحي."
-        ];
-        let index = 0;
+    <section aria-label="جرعة راحة سريعة">
+      <h2 class="quick-dose-title">جرعة راحة سريعة</h2>
+      <div class="quick-dose-box">
+        هالوعكة رح تعدي بسرعة يا حبيبتي، المهم هلق إنك ترتاحي وما تفكري بشي.
+      </div>
+    </section>
+  </main>
 
-        function nextQuote() {
-            index = (index + 1) % quotes.length;
-            const el = document.getElementById('quoteText');
-            el.style.opacity = 0;
-            setTimeout(() => {
-                el.innerText = quotes[index];
-                el.style.opacity = 1;
-            }, 200);
-        }
-    </script>
+  <script>
+    function toggleEnvelope(selectedCard) {
+      const allCards = document.querySelectorAll('.envelope-card');
+      const wasOpen = selectedCard.classList.contains('open');
+
+      allCards.forEach(card => {
+        card.classList.remove('open');
+        card.setAttribute('aria-expanded', 'false');
+      });
+
+      if (!wasOpen) {
+        selectedCard.classList.add('open');
+        selectedCard.setAttribute('aria-expanded', 'true');
+      }
+    }
+
+    function handleKey(event, card) {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        toggleEnvelope(card);
+      }
+    }
+  </script>
 </body>
 </html>
